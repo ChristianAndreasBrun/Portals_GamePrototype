@@ -34,14 +34,14 @@ public class Player_ControlScript : MonoBehaviour
         Rigidbody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Rigidbody.velocity.y);
 
         // Coloca los portales en la posicion del raton dentro de la camera
-        if (Input.GetButtonDown("Fire1"))
-        {
-            portals[0].position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-        if (Input.GetButtonDown("Fire2"))
-        {
-            portals[1].position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    portals[0].position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //}
+        //if (Input.GetButtonDown("Fire2"))
+        //{
+        //    portals[1].position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //}
 
 
         if (isGrounded)
@@ -65,8 +65,9 @@ public class Player_ControlScript : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    public void AutoJump()
     {
-        
+        Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 0);
+        Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 }
